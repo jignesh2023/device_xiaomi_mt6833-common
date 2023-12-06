@@ -397,15 +397,11 @@ PRODUCT_PACKAGES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-    android.hardware.sensors@2.1-service.xiaomi-77multihal \
+    android.hardware.sensors@2.1-service.xiaomi-multihal \
     android.frameworks.sensorservice@1.0.vendor \
-<<<<<<< HEAD
-    libsensorndkbridge-hidl
-=======
     libpower.vendor:64 \
     libsensorndkbridge \
     libshim_sensors
->>>>>>> 20f18fa (mt6833-common: Compile required vndk blobs to vendor)
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
