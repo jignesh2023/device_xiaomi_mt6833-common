@@ -181,6 +181,7 @@ PRODUCT_PACKAGES += \
 
 # Health
 PRODUCT_PACKAGES += \
+    android.hardware.health@1.0.vendor:64 \
     android.hardware.health-service.mt6833 \
     android.hardware.health-service.mt6833-recovery
 
