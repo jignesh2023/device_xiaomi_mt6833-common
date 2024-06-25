@@ -117,7 +117,9 @@ PRODUCT_PACKAGES += \
 # Camera
 PRODUCT_PACKAGES += \
     android.hardware.camera.device@3.6.vendor:64 \
-    android.hardware.camera.provider@2.6.vendor:64
+    android.hardware.camera.provider@2.6.vendor:64 \
+    libexif.vendor:64 \
+    libpng.vendor:64
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -151,12 +153,15 @@ PRODUCT_PACKAGES += \
     android.hardware.gnss.measurement_corrections@1.1.vendor:64 \
     android.hardware.gnss.visibility_control@1.0.vendor:64 \
     android.hardware.gnss@2.1.vendor:64 \
-    android.hardware.gnss-V1-ndk.vendor:64
+    android.hardware.gnss-V1-ndk.vendor:64 \
+    libcurl.vendor:64 \
+    libexpat.vendor
 
 # Gatekeeper
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-service \
-    android.hardware.gatekeeper@1.0-impl
+    android.hardware.gatekeeper@1.0-impl \
+    libgatekeeper.vendor:64
 
 # Graphics
 PRODUCT_PACKAGES += \
@@ -166,10 +171,15 @@ PRODUCT_PACKAGES += \
     android.hardware.memtrack@1.0-service \
     android.hardware.memtrack@1.0-impl \
     libdrm.vendor \
-    libutils-v32
+    libion.vendor \
+    libui.vendor \
+    libunwindstack.vendor \
+    libutils-v32 \
+    libutilscallstack.vendor
 
 # HIDL
 PRODUCT_PACKAGES += \
+    libhidlmemory.vendor \
     libhidltransport \
     libhidltransport.vendor \
     libhwbinder.vendor \
@@ -195,6 +205,11 @@ PRODUCT_BOOT_JARS += \
     mediatek-telecom-common \
     mediatek-telephony-base \
     mediatek-telephony-common
+
+PRODUCT_PACKAGES += \
+    libnetutils.vendor:64 \
+    libshim_sink \
+    libui_shim
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/permissions/privapp-permissions-com.mediatek.ims.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-com.mediatek.ims.xml
@@ -385,7 +400,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.sensors@2.1-service.xiaomi-77multihal \
     android.frameworks.sensorservice@1.0.vendor \
+<<<<<<< HEAD
     libsensorndkbridge-hidl
+=======
+    libpower.vendor:64 \
+    libsensorndkbridge \
+    libshim_sensors
+>>>>>>> 20f18fa (mt6833-common: Compile required vndk blobs to vendor)
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
