@@ -28,6 +28,8 @@ PRODUCT_SHIPPING_API_LEVEL := 30
 # Dynamic Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
+BOARD_USES_QCOM_HARDWARE := false
+
 # A/B
 PRODUCT_PACKAGES += \
     update_engine \
@@ -259,6 +261,7 @@ PRODUCT_PACKAGES += \
     SystemUIOverlayMT6833 \
     TelephonyOverlayMT6833 \
     WifiResOverlayMT6833
+    
 
 PRODUCT_ENFORCE_RRO_TARGETS := *
 

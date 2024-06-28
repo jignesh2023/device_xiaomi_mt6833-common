@@ -8,3 +8,10 @@ persist.dbg.wfc_avail_ovr=1
 
 # Zygote
 zygote.critical_window.minute=10
+
+# Spark-OS
+ro.spark.device.name=everpal
+ro.spark.group.url=https://t.me/mt6833unified_chat
+ro.spark.maintainer=Jax Sue&Jignesh shukla
+ro.spark.maintainer.username=weaponmasterjax/Jignesh2023
+
