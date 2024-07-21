@@ -17,6 +17,7 @@
 -vendor/lib/libblisrc32_vendor.so
 -vendor/lib/libbwc.so
 -vendor/lib/libcvsd_mtk.so
+-vendor/lib/libmsbc_mtk.so
 -vendor/lib/libmtklimiter_vendor.so
 -vendor/lib/libmtkshifter_vendor.so
 -vendor/lib/libspeech_enh_lib.so
@@ -233,7 +234,6 @@ vendor/firmware/mt6635_fm_v1_coeff.bin
 vendor/firmware/mt6635_fm_v1_patch.bin
 
 # Fingerprint
--vendor/lib64/com.fingerprints.extension@1.0.so
 -vendor/lib64/hw/fingerprint.fpc.so:vendor/lib64/hw/fingerprint.fpc.default.so
 -vendor/lib64/hw/fingerprint.goodix.so:vendor/lib64/hw/fingerprint.goodix.default.so
 -vendor/lib64/libgf_ca.so
