@@ -207,7 +207,7 @@ PRODUCT_BOOT_JARS += \
 
 PRODUCT_PACKAGES += \
     libnetutils.vendor:64 \
-    libshim_sink \
+    libshim_sink:64 \
     libui_shim
 
 PRODUCT_COPY_FILES += \
