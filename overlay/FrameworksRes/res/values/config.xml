@@ -376,9 +376,6 @@
          during initialization when the setting is still null. -->
     <bool name="config_dozeAlwaysOnEnabled">false</bool>
 
-    <!-- Doze: should the TYPE_PICK_UP_GESTURE sensor be used as a pulse signal. -->
-    <bool name="config_dozePulsePickup">true</bool>
-
     <!-- True if the display hardware only has brightness buckets rather than a full range of
           backlight values -->
     <bool name="config_displayBrightnessBucketsInDoze">true</bool>
@@ -502,7 +499,7 @@
         <item>"/system/framework/framework.jar"</item>
         <item>"/system/framework/services.jar"</item>
         <item>"/system/bin/surfaceflinger"</item>
-        <item>"/system_ext/priv-app/SystemUIGoogle/SystemUIGoogle.apk"</item>
+        <item>"/system_ext/priv-app/SystemUI/SystemUI.apk"</item>
     </string-array>
 
     <!-- Should the pinner service pin the Home application? -->

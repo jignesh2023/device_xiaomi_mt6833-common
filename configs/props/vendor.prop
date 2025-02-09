@@ -65,10 +65,6 @@ ro.netflix.bsp_rev=MTK6833-32817-1
 # FUSE passthrough
 persist.sys.fuse.passthrough.enable=true
 
-# FM Radio
-persist.vendor.connsys.fm_chipid=mt6631_6635
-ro.vendor.fm.platform=mt6631_6635
-
 # GNSS
 ro.vendor.gps.chrdev=gps_drv
 ro.vendor.mtk_agps_app=1
@@ -81,6 +77,10 @@ ro.hardware.gatekeeper=beanpod
 # Graphics
 debug.mediatek.appgamepq_compress=1
 debug.sf.disable_client_composition_cache=1
+debug.sf.early.app.duration=16500000
+debug.sf.early.sf.duration=16000000
+debug.sf.earlyGl.app.duration=21000000
+debug.sf.earlyGl.sf.duration=13500000
 debug.sf.enable_gl_backpressure=1
 debug.sf.use_phase_offsets_as_durations=1
 debug.sf.late.sf.duration=10500000
@@ -91,11 +91,12 @@ debug.sf.earlyGl.sf.duration=13500000
 debug.sf.earlyGl.app.duration=21000000
 debug.sf.enable_hwc_vds=0
 debug.sf.enable_transaction_tracing=false
+debug.sf.late.app.duration=20500000
+debug.sf.late.sf.duration=10500000
 debug.sf.predict_hwc_composition_strategy=0
+debug.sf.use_phase_offsets_as_durations=1
 persist.sys.sf.color_saturation=1.1
 persist.sys.sf.native_mode=0
-debug.renderengine.backend=skiaglthreaded
-debug.hwui.skia_atrace_enabled=false
 ro.hardware.egl=meow
 ro.hardware.hwcomposer=mtk_common
 ro.hardware.vulkan=mali
@@ -163,7 +164,6 @@ ro.hardware.consumerir=common
 
 # Keymaster
 ro.crypto.volume.filenames_mode=aes-256-cts
-ro.hardware.kmsetkey=beanpod
 
 # LMK
 ro.lmk.kill_timeout_ms=100
@@ -175,11 +175,13 @@ ro.lmk.thrashing_limit_decay=50
 
 # Media
 debug.mediatek.disp_decompress=1
+debug.stagefright.c2inputsurface=-1
 media.c2.dmabuf.padding=3072
 ro.vendor.jpeg_decode_sw_opt=1
 ro.vendor.mtk_config_max_dram_size=0x800000000
 ro.vendor.mtk_sec_video_path_support=1
 ro.vendor.mtk_video_hevc_enc_support=1
+vendor.media.omx=0
 vendor.mtk.vdec.waitkeyframeforplay=9
 
 # Mediatek
@@ -211,6 +213,7 @@ ro.telephony.default_network=32,32,32,32
 ro.telephony.iwlan_operation_mode=AP-assisted
 ro.telephony.sim.count=2
 ro.vendor.md_prop_ver=1
+ro.vendor.mediatek.rsc_name=GL
 ro.vendor.mtk_c2k_lte_mode=0
 ro.vendor.mtk_eccci_c2k=1
 ro.vendor.mtk_embms_support=1
@@ -220,6 +223,7 @@ ro.vendor.mtk_fd_support=1
 ro.vendor.mtk_lte_support=1
 ro.vendor.mtk_mcf_support=1
 ro.vendor.mtk_md1_support=22
+ro.vendor.mtk_md3_support=0
 ro.vendor.mtk_md_world_mode_support=1
 ro.vendor.mtk_protocol1_rat_config=N/Lf/Lt/W/G
 ro.vendor.mtk_ps1_rat=N/Lf/Lt/W/G
@@ -234,6 +238,8 @@ ro.vendor.num_md_protocol=2
 ro.vendor.radio.max.multisim=dsds
 ro.vendor.sim_me_lock_mode=3
 ro.vendor.sim_me_lock_mode=3
+ro.vendor.sys.current_rsc_path=/system/etc/rsc/GL
+ro.vendor.vnd.current_rsc_path=/vendor/etc/rsc/GL
 telephony.active_modems.max_count=2
 
 # Sensors

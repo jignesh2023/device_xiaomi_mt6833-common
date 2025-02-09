@@ -65,6 +65,7 @@ symlink_fixup(){
 		local plat="$(grep 'ro.board.platform' ${SRC}/vendor/build.prop | cut -d= -f2 | head -1)"
 		local fpath="${dir}/${plat}/${fname}"
 		[ -f "${fpath}" ] && {
+			rm -rf "${2}"
 			cp -f "${fpath}" "${2}"
 		}
 	}
@@ -73,12 +74,22 @@ export -f symlink_fixup
 
 function blob_fixup {
 	case "$1" in
+		system_ext/lib*/libsink.so)
+			grep -q "libshim_sink.so" "${2}" || \
+			"${PATCHELF}" --add-needed "libshim_sink.so" "${2}"
+			;;
+		system_ext/lib*/libsource.so)
+			grep -q libui_shim.so "${2}" || \
+			"${PATCHELF}" --add-needed libui_shim.so "${2}"
+			;;
 		vendor/bin/hw/android.hardware.gnss-service.mediatek | \
 		vendor/lib*/hw/android.hardware.gnss-impl-mediatek.so)
 			grep -q "android.hardware.gnss-V1-ndk_platform.so" "${2}" && \
 			"${PATCHELF}" --replace-needed "android.hardware.gnss-V1-ndk_platform.so" "android.hardware.gnss-V1-ndk.so" "${2}"
 			;;
-		vendor/bin/hw/android.hardware.media.c2@1.2-mediatek)
+		vendor/bin/hw/android.hardware.media.c2@1.2-mediatek-64b)
+			grep -q "libavservices_minijail_vendor.so" "${2}" && \
+			"${PATCHELF}" --replace-needed "libavservices_minijail_vendor.so" "libavservices_minijail.so" "${2}"
 			grep -q "libstagefright_foundation-v33.so" "${2}" || \
 			"${PATCHELF}" --add-needed "libstagefright_foundation-v33.so" "${2}"
 			;;
@@ -87,8 +98,11 @@ function blob_fixup {
 			"${PATCHELF}" --replace-needed "android.hardware.power-V2-ndk_platform.so" "android.hardware.power-V2-ndk.so" "${2}"
 			;;
 		vendor/bin/mnld | vendor/lib*/libaalservice.so | vendor/lib*/libcam.utils.sensorprovider.so)
-			grep -q "libsensorndkbridge.so" "${2}" && \
-			"${PATCHELF}" --replace-needed "libsensorndkbridge.so" "libsensorndkbridge-hidl.so" "${2}"
+			grep -q "libshim_sensors.so" "${2}" || \
+			"${PATCHELF}" --add-needed "libshim_sensors.so" "${2}"
+			;;
+		vendor/etc/init/android.hardware.media.c2@1.2-mediatek-64b.rc)
+			grep -q "mediatek-64b" "${2}" || sed -i 's/mediatek/mediatek-64b/' "${2}"
 			;;
 		vendor/etc/init/android.hardware.neuralnetworks@1.3-service-mtk-neuron.rc)
 			sed -i 's/start/enable/' "${2}"
@@ -102,6 +116,10 @@ function blob_fixup {
 		vendor/lib*/libaiselector.so | vendor/lib*/libdpframework.so | vendor/lib*/libmtk_drvb.so | \
 		vendor/lib*/libnir_neon_driver.so | vendor/lib*/libpq_prot.so)
 			symlink_fixup "${1}" "${2}"
+			;;
+		vendor/lib*/hw/android.hardware.camera.provider@2.6-impl-mediatek.so)
+			grep -q "libutils.so" "${2}" && \
+			"${PATCHELF}" --replace-needed "libutils.so" "libutils-v32.so" "${2}"
 			;;
 		vendor/lib*/hw/vendor.mediatek.hardware.pq@*-impl.so)
 			grep -q "libutils.so" "${2}" && \
